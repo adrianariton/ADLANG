@@ -1,0 +1,23 @@
+composefun => @(f, g, h)
+    make f : func(1, 1)
+    make g : func(1, 1)
+    return _f(_g(_h))
+dblp => @(a)
+    return _a + _a + 1
+trpl => @(a)
+    _b(_a + _a + _a)
+    if (_a == 2)
+        _b(1)
+        if (_b == 13)
+            _b(2)
+        end
+    end
+    return _b
+getaddr => @(f)
+    make f : func(??, ??)
+    return _f
+_gasan(6)
+_gasan(_getaddr(_composefun))
+_horia(_getaddr(_gasan))
+make horia : func(3, 1)
+_call(1, _horia(_dblp, _trpl, 2))
