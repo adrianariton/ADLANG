@@ -46,7 +46,8 @@ enum TokenSubType {
     _REFF,
     _IF,
     _WHILE,
-    _FOR
+    _FOR,
+    _OLD_FORMAT_SPECIFIER
 };
 
 enum RegType {

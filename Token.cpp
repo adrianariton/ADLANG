@@ -10,6 +10,13 @@ Token::Token(TokenType type, std::string value) {
 
 void Token::update(std::string value) {
     this->value = value;
+
+
+    if (!(*this).value.compare("!!")) {
+        this->type = IDENTIFIER;
+        this->subtype = _OLD_FORMAT_SPECIFIER;
+    }
+
     
     if (is_keywd(value))
         this->type = KEYWD;
@@ -72,7 +79,6 @@ void Token::update(std::string value) {
         this->type = IDENTIFIER;
         this->subtype = _REFF;
     }
-
     if (!(*this).value.compare("??")) {
         this->type = IDENTIFIER;
         this->skippable = true;
@@ -88,7 +94,12 @@ void Token::update(std::string value) {
         this->type = IDENTIFIER;
         this->subtype = _WHILE;
     }
-    this->logtok();
+    if (!(*this).value.compare("!!")) {
+        this->type = IDENTIFIER;
+        this->subtype = _OLD_FORMAT_SPECIFIER;
+    }
+
+    // this->logtok();
 }
 
 Token::Token(std::string value)

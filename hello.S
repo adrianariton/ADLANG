@@ -7,19 +7,16 @@ _start:
 ;;-------
 
 
-;; [LINE] composefun => @(f, g, h)
+;; [LINE] // define a function that returns f(g(h)) for f, g, functions and h number
+;; len|75
+;;	 [COMMENT]
+;;-------
 
-		;; Token{composefun, 1, 0, |0}
-		;; Token{=, 0, 0, |0}
+
+;; [LINE] composefun => @(f, g, h)
+;; len|25
 		;; Token{=>, 0, 4, |0}
-		;; Token{@, 6, 9, |0}
-		;; Token{(, 3, 1, |0}
-		;; Token{f, 1, 0, |0}
-		;; Token{,, 0, 3, |0}
-		;; Token{g, 1, 0, |0}
-		;; Token{,, 0, 3, |0}
-		;; Token{h, 1, 0, |0}
-		;; Token{), 3, 2, |0}
+;; OLD  TOKENS _ 
 		;; Token{composefun, 1, 6, |0}
 		;; Token{=>, 0, 4, |0}
 		;; Token{@, 6, 9, |0}
@@ -28,16 +25,51 @@ _start:
 		;; Token{,, 0, 3, |0}
 		;; Token{g, 1, 6, |0}
 		;; Token{,, 0, 3, |0}
+		;; Token{h, 1, 6, |0}
+		;; Token{), 3, 2, |0}
+;; ADDING NEW TOKENS _ 
+		;; Token{_, 6, 0, |0}
+		;; Token{composefun, 1, 6, |0}
+		;; Token{=>, 0, 4, |0}
+		;; Token{@, 6, 9, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{_, 6, 0, |0}
+		;; Token{f, 1, 6, |0}
+		;; Token{,, 0, 3, |0}
+		;; Token{_, 6, 0, |0}
+		;; Token{g, 1, 6, |0}
+		;; Token{,, 0, 3, |0}
+		;; Token{_, 6, 0, |0}
+		;; Token{h, 1, 6, |0}
+		;; Token{), 3, 2, |0}
+;; ADDED NEW TOKENS _ 
+		;; Token{_, 6, 0, |0}
+		;; Token{composefun, 1, 6, |0}
+		;; Token{=>, 0, 4, |0}
+		;; Token{@, 6, 9, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{_, 6, 0, |0}
+		;; Token{f, 1, 6, |0}
+		;; Token{,, 0, 3, |0}
+		;; Token{_, 6, 0, |0}
+		;; Token{g, 1, 6, |0}
+		;; Token{,, 0, 3, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{h, 1, 6, |0}
 		;; Token{), 3, 2, |0}
 ;;------- POSTFIX
+		;; Token{_, 6, 0, |0}
 		;; Token{composefun, 1, 6, |0}
 		;; Token{@, 6, 9, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{f, 1, 6, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{g, 1, 6, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{h, 1, 6, |0}
 		;; Token{=>, 0, 4, |0}
 ;;------- //POSTFIX
+		;; Token{_, 6, 0, |0}
 		;; Token{composefun, 1, 6, |0}
 ;; resolving... 
 		;; Token{composefun, 1, 6, |0}
@@ -49,18 +81,21 @@ composefun:
 	stp x29, x30, [sp, #-16]!
 	mov x29, sp
 		;; Token{@, 6, 9, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{f, 1, 6, |0}
 ;; resolving... 
 		;; Token{f, 1, 6, |0}
 ;; ENTERING IF composefun
 ;; VAR f NOT HERE
 ;; VAR f NOT HERE 0
+		;; Token{_, 6, 0, |0}
 		;; Token{g, 1, 6, |0}
 ;; resolving... 
 		;; Token{g, 1, 6, |0}
 ;; ENTERING IF composefun
 ;; VAR g NOT HERE
 ;; VAR g NOT HERE 0
+		;; Token{_, 6, 0, |0}
 		;; Token{h, 1, 6, |0}
 ;; resolving... 
 		;; Token{h, 1, 6, |0}
@@ -74,16 +109,7 @@ composefun:
 
 
 ;; [LINE]     make f : func(1, 1)
-
-		;; Token{make, 6, 10, |0}
-		;; Token{f, 1, 0, |0}
-		;; Token{:, 3, 0, |0}
-		;; Token{func, 1, 11, |0}
-		;; Token{(, 3, 1, |0}
-		;; Token{1, 4, 7, |0}
-		;; Token{,, 0, 3, |0}
-		;; Token{1, 4, 7, |0}
-		;; Token{), 3, 2, |0}
+;; len|24
 		;; Token{make, 6, 10, |0}
 		;; Token{f, 1, 6, |0}
 		;; Token{:, 3, 0, |0}
@@ -103,7 +129,6 @@ composefun:
 		;; Token{make, 6, 10, |0}
 		;; Token{f, 1, 6, |0}
 ;; resolving... 
-		;; Token{make, 6, 10, |0}
 		;; Token{f, 1, 6, |0}
 ;; ENTERING IF composefun
 ;; VAR f HERE
@@ -131,16 +156,7 @@ composefun:
 
 
 ;; [LINE]     make g : func(1, 1)
-
-		;; Token{make, 6, 10, |0}
-		;; Token{g, 1, 0, |0}
-		;; Token{:, 3, 0, |0}
-		;; Token{func, 1, 11, |0}
-		;; Token{(, 3, 1, |0}
-		;; Token{1, 4, 7, |0}
-		;; Token{,, 0, 3, |0}
-		;; Token{1, 4, 7, |0}
-		;; Token{), 3, 2, |0}
+;; len|24
 		;; Token{make, 6, 10, |0}
 		;; Token{g, 1, 6, |0}
 		;; Token{:, 3, 0, |0}
@@ -160,7 +176,6 @@ composefun:
 		;; Token{make, 6, 10, |0}
 		;; Token{g, 1, 6, |0}
 ;; resolving... 
-		;; Token{make, 6, 10, |0}
 		;; Token{g, 1, 6, |0}
 ;; ENTERING IF composefun
 ;; VAR g HERE
@@ -187,8 +202,24 @@ composefun:
 ;;-------
 
 
-;; [LINE]     return _f(_g(_h))
+;; [LINE] // can be also `!!    return h g f`
+;; len|36
+;;	 [COMMENT]
+;;-------
 
+
+;; [LINE]     return f(g(h))
+;; len|19
+;; OLD  TOKENS _ 
+		;; Token{return, 2, 0, |0}
+		;; Token{f, 1, 0, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{g, 1, 0, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{h, 1, 6, |0}
+		;; Token{), 3, 2, |0}
+		;; Token{), 3, 2, |0}
+;; ADDING NEW TOKENS _ 
 		;; Token{return, 2, 0, |0}
 		;; Token{_, 6, 0, |0}
 		;; Token{f, 1, 0, |0}
@@ -197,9 +228,10 @@ composefun:
 		;; Token{g, 1, 0, |0}
 		;; Token{(, 3, 1, |0}
 		;; Token{_, 6, 0, |0}
-		;; Token{h, 1, 0, |0}
+		;; Token{h, 1, 6, |0}
 		;; Token{), 3, 2, |0}
 		;; Token{), 3, 2, |0}
+;; ADDED NEW TOKENS _ 
 		;; Token{return, 2, 0, |0}
 		;; Token{_, 6, 0, |0}
 		;; Token{f, 1, 0, |0}
@@ -231,7 +263,6 @@ composefun:
 ;; PARAMS SIZE: 0
 
 ;; IS_VAR h
-		;; Token{$$[x29 , #48], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #48], 4, 8, |1}
 
 
@@ -252,7 +283,6 @@ composefun:
 	blr x14
 	add sp, sp, #16
 	str x0 , [sp, #-16]! ;; push x0
-		;; Token{$$[x29 , #-16], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #-16], 4, 8, |1}
 
 
@@ -273,7 +303,6 @@ composefun:
 	blr x14
 	add sp, sp, #16
 	str x0 , [sp, #-16]! ;; push x0
-		;; Token{$$[x29 , #-32], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #-32], 4, 8, |1}
 
 
@@ -289,27 +318,56 @@ endcomposefun:
 ;;-------
 
 
-;; [LINE] dblp => @(a)
+;; [LINE] 
+;; len|1
+;;------- POSTFIX
+;;------- //POSTFIX
+;;-------
 
-		;; Token{dblp, 1, 0, |0}
-		;; Token{=, 0, 0, |0}
+
+;; [LINE] // dblp function : double param plus one
+;; len|41
+;;	 [COMMENT]
+;;-------
+
+
+;; [LINE] dblp => @(a)
+;; len|13
 		;; Token{=>, 0, 4, |0}
-		;; Token{@, 6, 9, |0}
-		;; Token{(, 3, 1, |0}
-		;; Token{a, 1, 0, |0}
-		;; Token{), 3, 2, |0}
+;; OLD  TOKENS _ 
 		;; Token{dblp, 1, 6, |0}
 		;; Token{=>, 0, 4, |0}
 		;; Token{@, 6, 9, |0}
 		;; Token{(, 3, 1, |0}
+		;; Token{a, 1, 6, |0}
+		;; Token{), 3, 2, |0}
+;; ADDING NEW TOKENS _ 
+		;; Token{_, 6, 0, |0}
+		;; Token{dblp, 1, 6, |0}
+		;; Token{=>, 0, 4, |0}
+		;; Token{@, 6, 9, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{_, 6, 0, |0}
+		;; Token{a, 1, 6, |0}
+		;; Token{), 3, 2, |0}
+;; ADDED NEW TOKENS _ 
+		;; Token{_, 6, 0, |0}
+		;; Token{dblp, 1, 6, |0}
+		;; Token{=>, 0, 4, |0}
+		;; Token{@, 6, 9, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{a, 1, 6, |0}
 		;; Token{), 3, 2, |0}
 ;;------- POSTFIX
+		;; Token{_, 6, 0, |0}
 		;; Token{dblp, 1, 6, |0}
 		;; Token{@, 6, 9, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{a, 1, 6, |0}
 		;; Token{=>, 0, 4, |0}
 ;;------- //POSTFIX
+		;; Token{_, 6, 0, |0}
 		;; Token{dblp, 1, 6, |0}
 ;; resolving... 
 		;; Token{dblp, 1, 6, |0}
@@ -321,6 +379,7 @@ dblp:
 	stp x29, x30, [sp, #-16]!
 	mov x29, sp
 		;; Token{@, 6, 9, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{a, 1, 6, |0}
 ;; resolving... 
 		;; Token{a, 1, 6, |0}
@@ -333,16 +392,25 @@ dblp:
 ;;-------
 
 
-;; [LINE]     return _a + _a + 1
-
+;; [LINE]     return a + a + 1
+;; len|21
+;; OLD  TOKENS _ 
 		;; Token{return, 2, 0, |0}
-		;; Token{_, 6, 0, |0}
-		;; Token{a, 1, 0, |0}
+		;; Token{a, 1, 6, |0}
 		;; Token{+, 0, 0, |0}
-		;; Token{_, 6, 0, |0}
-		;; Token{a, 1, 0, |0}
+		;; Token{a, 1, 6, |0}
 		;; Token{+, 0, 0, |0}
 		;; Token{1, 4, 7, |0}
+;; ADDING NEW TOKENS _ 
+		;; Token{return, 2, 0, |0}
+		;; Token{_, 6, 0, |0}
+		;; Token{a, 1, 6, |0}
+		;; Token{+, 0, 0, |0}
+		;; Token{_, 6, 0, |0}
+		;; Token{a, 1, 6, |0}
+		;; Token{+, 0, 0, |0}
+		;; Token{1, 4, 7, |0}
+;; ADDED NEW TOKENS _ 
 		;; Token{return, 2, 0, |0}
 		;; Token{_, 6, 0, |0}
 		;; Token{a, 1, 6, |0}
@@ -370,7 +438,6 @@ dblp:
 ;; PARAMS SIZE: 0
 
 ;; IS_VAR a
-		;; Token{$$[x29 , #16], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #16], 4, 8, |1}
 
 
@@ -383,7 +450,6 @@ dblp:
 ;; PARAMS SIZE: 0
 
 ;; IS_VAR a
-		;; Token{$$[x29 , #16], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #16], 4, 8, |1}
 
 
@@ -392,14 +458,12 @@ dblp:
 	ldr x15, [x29 , #16]
 	add x13, x14, x15
 	str x13 , [sp, #-16]! ;; push x13
-		;; Token{$$[x29 , #-16], 4, 8, |1}
 		;; Token{1, 4, 7, |0}
 		;; Token{+, 0, 0, |0}
 	ldr x14, [x29 , #-16]
 	mov x15, #1
 	add x13, x14, x15
 	str x13 , [sp, #-16]! ;; push x13
-		;; Token{$$[x29 , #-32], 4, 8, |1}
 		;; Token{return, 2, 0, |0}
 ;; resolving... 
 ;; @return: 1 of: dblp
@@ -412,27 +476,56 @@ enddblp:
 ;;-------
 
 
-;; [LINE] trpl => @(a)
+;; [LINE] 
+;; len|1
+;;------- POSTFIX
+;;------- //POSTFIX
+;;-------
 
-		;; Token{trpl, 1, 0, |0}
-		;; Token{=, 0, 0, |0}
+
+;; [LINE] // trpl function : triple but if a = 2 modify ret value (one)
+;; len|62
+;;	 [COMMENT]
+;;-------
+
+
+;; [LINE] trpl => @(a)
+;; len|13
 		;; Token{=>, 0, 4, |0}
-		;; Token{@, 6, 9, |0}
-		;; Token{(, 3, 1, |0}
-		;; Token{a, 1, 0, |0}
-		;; Token{), 3, 2, |0}
+;; OLD  TOKENS _ 
 		;; Token{trpl, 1, 6, |0}
 		;; Token{=>, 0, 4, |0}
 		;; Token{@, 6, 9, |0}
 		;; Token{(, 3, 1, |0}
+		;; Token{a, 1, 6, |0}
+		;; Token{), 3, 2, |0}
+;; ADDING NEW TOKENS _ 
+		;; Token{_, 6, 0, |0}
+		;; Token{trpl, 1, 6, |0}
+		;; Token{=>, 0, 4, |0}
+		;; Token{@, 6, 9, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{_, 6, 0, |0}
+		;; Token{a, 1, 6, |0}
+		;; Token{), 3, 2, |0}
+;; ADDED NEW TOKENS _ 
+		;; Token{_, 6, 0, |0}
+		;; Token{trpl, 1, 6, |0}
+		;; Token{=>, 0, 4, |0}
+		;; Token{@, 6, 9, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{a, 1, 6, |0}
 		;; Token{), 3, 2, |0}
 ;;------- POSTFIX
+		;; Token{_, 6, 0, |0}
 		;; Token{trpl, 1, 6, |0}
 		;; Token{@, 6, 9, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{a, 1, 6, |0}
 		;; Token{=>, 0, 4, |0}
 ;;------- //POSTFIX
+		;; Token{_, 6, 0, |0}
 		;; Token{trpl, 1, 6, |0}
 ;; resolving... 
 		;; Token{trpl, 1, 6, |0}
@@ -444,6 +537,7 @@ trpl:
 	stp x29, x30, [sp, #-16]!
 	mov x29, sp
 		;; Token{@, 6, 9, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{a, 1, 6, |0}
 ;; resolving... 
 		;; Token{a, 1, 6, |0}
@@ -456,20 +550,31 @@ trpl:
 ;;-------
 
 
-;; [LINE]     _b(_a + _a + _a)
-
+;; [LINE]     b(a + a + a)
+;; len|17
+;; OLD  TOKENS _ 
+		;; Token{b, 1, 0, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{a, 1, 6, |0}
+		;; Token{+, 0, 0, |0}
+		;; Token{a, 1, 6, |0}
+		;; Token{+, 0, 0, |0}
+		;; Token{a, 1, 6, |0}
+		;; Token{), 3, 2, |0}
+;; ADDING NEW TOKENS _ 
 		;; Token{_, 6, 0, |0}
 		;; Token{b, 1, 0, |0}
 		;; Token{(, 3, 1, |0}
 		;; Token{_, 6, 0, |0}
-		;; Token{a, 1, 0, |0}
+		;; Token{a, 1, 6, |0}
 		;; Token{+, 0, 0, |0}
 		;; Token{_, 6, 0, |0}
-		;; Token{a, 1, 0, |0}
+		;; Token{a, 1, 6, |0}
 		;; Token{+, 0, 0, |0}
 		;; Token{_, 6, 0, |0}
-		;; Token{a, 1, 0, |0}
+		;; Token{a, 1, 6, |0}
 		;; Token{), 3, 2, |0}
+;; ADDED NEW TOKENS _ 
 		;; Token{_, 6, 0, |0}
 		;; Token{b, 1, 0, |0}
 		;; Token{(, 3, 1, |0}
@@ -504,7 +609,6 @@ trpl:
 ;; PARAMS SIZE: 0
 
 ;; IS_VAR a
-		;; Token{$$[x29 , #16], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #16], 4, 8, |1}
 
 
@@ -517,7 +621,6 @@ trpl:
 ;; PARAMS SIZE: 0
 
 ;; IS_VAR a
-		;; Token{$$[x29 , #16], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #16], 4, 8, |1}
 
 
@@ -526,7 +629,6 @@ trpl:
 	ldr x15, [x29 , #16]
 	add x13, x14, x15
 	str x13 , [sp, #-16]! ;; push x13
-		;; Token{$$[x29 , #-16], 4, 8, |1}
 		;; Token{_, 6, 0, |0}
 		;; Token{a, 1, 6, |0}
 ;; resolving... 
@@ -536,7 +638,6 @@ trpl:
 ;; PARAMS SIZE: 0
 
 ;; IS_VAR a
-		;; Token{$$[x29 , #16], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #16], 4, 8, |1}
 
 
@@ -545,7 +646,6 @@ trpl:
 	ldr x15, [x29 , #16]
 	add x13, x14, x15
 	str x13 , [sp, #-16]! ;; push x13
-		;; Token{$$[x29 , #-32], 4, 8, |1}
 		;; Token{b, 1, 0, |0}
 ;; resolving... 
 		;; Token{b, 1, 0, |0}
@@ -558,16 +658,27 @@ trpl:
 ;;-------
 
 
-;; [LINE]     if (_a == 2)
-
+;; [LINE]     if (a == 2)
+;; len|16
+		;; Token{==, 0, 0, |0}
+;; OLD  TOKENS _ 
 		;; Token{if, 1, 13, |0}
 		;; Token{(, 3, 1, |0}
-		;; Token{_, 6, 0, |0}
-		;; Token{a, 1, 0, |0}
-		;; Token{=, 0, 0, |0}
+		;; Token{a, 1, 6, |0}
 		;; Token{==, 0, 0, |0}
 		;; Token{2, 4, 7, |0}
 		;; Token{), 3, 2, |0}
+;; ADDING NEW TOKENS _ 
+		;; Token{_, 6, 0, |0}
+		;; Token{if, 1, 13, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{_, 6, 0, |0}
+		;; Token{a, 1, 6, |0}
+		;; Token{==, 0, 0, |0}
+		;; Token{2, 4, 7, |0}
+		;; Token{), 3, 2, |0}
+;; ADDED NEW TOKENS _ 
+		;; Token{_, 6, 0, |0}
 		;; Token{if, 1, 13, |0}
 		;; Token{(, 3, 1, |0}
 		;; Token{_, 6, 0, |0}
@@ -577,11 +688,13 @@ trpl:
 		;; Token{), 3, 2, |0}
 ;;------- POSTFIX
 		;; Token{_, 6, 0, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{a, 1, 6, |0}
 		;; Token{2, 4, 7, |0}
 		;; Token{==, 0, 0, |0}
 		;; Token{if, 1, 13, |0}
 ;;------- //POSTFIX
+		;; Token{_, 6, 0, |0}
 		;; Token{_, 6, 0, |0}
 		;; Token{a, 1, 6, |0}
 ;; resolving... 
@@ -591,7 +704,6 @@ trpl:
 ;; PARAMS SIZE: 0
 
 ;; IS_VAR a
-		;; Token{$$[x29 , #16], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #16], 4, 8, |1}
 
 
@@ -600,33 +712,38 @@ trpl:
 	ldr x14, [x29 , #16]
 	mov x15, #2
 	cmp x14, x15
-cset x13, eq
+	cset x13, eq
 	str x13 , [sp, #-16]! ;; push x13
 	ldr x14, [x29 , #16]
 	mov x15, #2
 	cmp x14, x15
-		;; Token{$$[x29 , #-64], 4, 8, |1}
 		;; Token{if, 1, 13, |0}
 ;; resolving... 
 		;; Token{if, 1, 13, |0}
 ;; ENTERING IF trpl
 ;; OKOK
 ;; OKOK
-;; ENTERING IF .F8
-		;; Token{$$[x29 , #-64], 4, 8, |1}
+;; ENTERING IF .F10
 	ldr x14, [x29 , #-64]
 	cmp x14, #0
-b.eq .F8
+b.eq .F10
 ;;-------
 
 
-;; [LINE]         _b(1)
-
+;; [LINE]         b(1)
+;; len|13
+;; OLD  TOKENS _ 
+		;; Token{b, 1, 0, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{1, 4, 7, |0}
+		;; Token{), 3, 2, |0}
+;; ADDING NEW TOKENS _ 
 		;; Token{_, 6, 0, |0}
 		;; Token{b, 1, 0, |0}
 		;; Token{(, 3, 1, |0}
 		;; Token{1, 4, 7, |0}
 		;; Token{), 3, 2, |0}
+;; ADDED NEW TOKENS _ 
 		;; Token{_, 6, 0, |0}
 		;; Token{b, 1, 0, |0}
 		;; Token{(, 3, 1, |0}
@@ -642,7 +759,7 @@ b.eq .F8
 		;; Token{b, 1, 0, |0}
 ;; resolving... 
 		;; Token{b, 1, 0, |0}
-;; ENTERING IF .F8
+;; ENTERING IF .F10
 ;; VAR b HERE
 ;; PARAMS SIZE: 1
 		;; Token{1, 4, 7, |0}
@@ -653,75 +770,92 @@ b.eq .F8
 ;;-------
 
 
-;; [LINE]         if (_b == 13)
-
+;; [LINE]         if (b == 1)
+;; len|20
+		;; Token{==, 0, 0, |0}
+;; OLD  TOKENS _ 
 		;; Token{if, 1, 13, |0}
 		;; Token{(, 3, 1, |0}
-		;; Token{_, 6, 0, |0}
-		;; Token{b, 1, 0, |0}
-		;; Token{=, 0, 0, |0}
+		;; Token{b, 1, 6, |0}
 		;; Token{==, 0, 0, |0}
-		;; Token{13, 4, 7, |0}
+		;; Token{1, 4, 7, |0}
 		;; Token{), 3, 2, |0}
+;; ADDING NEW TOKENS _ 
+		;; Token{_, 6, 0, |0}
 		;; Token{if, 1, 13, |0}
 		;; Token{(, 3, 1, |0}
 		;; Token{_, 6, 0, |0}
 		;; Token{b, 1, 6, |0}
 		;; Token{==, 0, 0, |0}
-		;; Token{13, 4, 7, |0}
+		;; Token{1, 4, 7, |0}
+		;; Token{), 3, 2, |0}
+;; ADDED NEW TOKENS _ 
+		;; Token{_, 6, 0, |0}
+		;; Token{if, 1, 13, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{_, 6, 0, |0}
+		;; Token{b, 1, 6, |0}
+		;; Token{==, 0, 0, |0}
+		;; Token{1, 4, 7, |0}
 		;; Token{), 3, 2, |0}
 ;;------- POSTFIX
 		;; Token{_, 6, 0, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{b, 1, 6, |0}
-		;; Token{13, 4, 7, |0}
+		;; Token{1, 4, 7, |0}
 		;; Token{==, 0, 0, |0}
 		;; Token{if, 1, 13, |0}
 ;;------- //POSTFIX
 		;; Token{_, 6, 0, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{b, 1, 6, |0}
 ;; resolving... 
 		;; Token{b, 1, 6, |0}
-;; ENTERING IF .F8
+;; ENTERING IF .F10
 ;; VAR b HERE
 ;; PARAMS SIZE: 0
 
 ;; IS_VAR b
-		;; Token{$$[x29 , #-48], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #-48], 4, 8, |1}
 
 
-		;; Token{13, 4, 7, |0}
+		;; Token{1, 4, 7, |0}
 		;; Token{==, 0, 0, |0}
 	ldr x14, [x29 , #-48]
-	mov x15, #13
+	mov x15, #1
 	cmp x14, x15
-cset x13, eq
+	cset x13, eq
 	str x13 , [sp, #-16]! ;; push x13
 	ldr x14, [x29 , #-48]
-	mov x15, #13
+	mov x15, #1
 	cmp x14, x15
-		;; Token{$$[x29 , #-80], 4, 8, |1}
 		;; Token{if, 1, 13, |0}
 ;; resolving... 
 		;; Token{if, 1, 13, |0}
-;; ENTERING IF .F8
-;; OKOK
-;; OKOK
 ;; ENTERING IF .F10
-		;; Token{$$[x29 , #-80], 4, 8, |1}
+;; OKOK
+;; OKOK
+;; ENTERING IF .F12
 	ldr x14, [x29 , #-80]
 	cmp x14, #0
-b.eq .F10
+b.eq .F12
 ;;-------
 
 
-;; [LINE]             _b(2)
-
+;; [LINE]             b(2)
+;; len|17
+;; OLD  TOKENS _ 
+		;; Token{b, 1, 0, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{2, 4, 7, |0}
+		;; Token{), 3, 2, |0}
+;; ADDING NEW TOKENS _ 
 		;; Token{_, 6, 0, |0}
 		;; Token{b, 1, 0, |0}
 		;; Token{(, 3, 1, |0}
 		;; Token{2, 4, 7, |0}
 		;; Token{), 3, 2, |0}
+;; ADDED NEW TOKENS _ 
 		;; Token{_, 6, 0, |0}
 		;; Token{b, 1, 0, |0}
 		;; Token{(, 3, 1, |0}
@@ -737,7 +871,7 @@ b.eq .F10
 		;; Token{b, 1, 0, |0}
 ;; resolving... 
 		;; Token{b, 1, 0, |0}
-;; ENTERING IF .F10
+;; ENTERING IF .F12
 ;; VAR b HERE
 ;; PARAMS SIZE: 1
 		;; Token{2, 4, 7, |0}
@@ -749,8 +883,29 @@ b.eq .F10
 
 
 ;; [LINE]         end
-
+;; len|12
+;; OLD  TOKENS _ 
 		;; Token{end, 2, 0, |0}
+;; ADDING NEW TOKENS _ 
+		;; Token{end, 2, 0, |0}
+;; ADDED NEW TOKENS _ 
+		;; Token{end, 2, 0, |0}
+;;------- POSTFIX
+		;; Token{end, 2, 0, |0}
+;;------- //POSTFIX
+		;; Token{end, 2, 0, |0}
+;; resolving... 
+.F12:
+;;-------
+
+
+;; [LINE]     end
+;; len|8
+;; OLD  TOKENS _ 
+		;; Token{end, 2, 0, |0}
+;; ADDING NEW TOKENS _ 
+		;; Token{end, 2, 0, |0}
+;; ADDED NEW TOKENS _ 
 		;; Token{end, 2, 0, |0}
 ;;------- POSTFIX
 		;; Token{end, 2, 0, |0}
@@ -761,24 +916,16 @@ b.eq .F10
 ;;-------
 
 
-;; [LINE]     end
-
-		;; Token{end, 2, 0, |0}
-		;; Token{end, 2, 0, |0}
-;;------- POSTFIX
-		;; Token{end, 2, 0, |0}
-;;------- //POSTFIX
-		;; Token{end, 2, 0, |0}
-;; resolving... 
-.F8:
-;;-------
-
-
-;; [LINE]     return _b
-
+;; [LINE]     return b
+;; len|13
+;; OLD  TOKENS _ 
+		;; Token{return, 2, 0, |0}
+		;; Token{b, 1, 0, |0}
+;; ADDING NEW TOKENS _ 
 		;; Token{return, 2, 0, |0}
 		;; Token{_, 6, 0, |0}
 		;; Token{b, 1, 0, |0}
+;; ADDED NEW TOKENS _ 
 		;; Token{return, 2, 0, |0}
 		;; Token{_, 6, 0, |0}
 		;; Token{b, 1, 0, |0}
@@ -796,7 +943,6 @@ b.eq .F10
 ;; PARAMS SIZE: 0
 
 ;; IS_VAR b
-		;; Token{$$[x29 , #-48], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #-48], 4, 8, |1}
 
 
@@ -812,27 +958,56 @@ endtrpl:
 ;;-------
 
 
-;; [LINE] getaddr => @(f)
+;; [LINE] 
+;; len|1
+;;------- POSTFIX
+;;------- //POSTFIX
+;;-------
 
-		;; Token{getaddr, 1, 0, |0}
-		;; Token{=, 0, 0, |0}
+
+;; [LINE] // getaddr function : return address of a function
+;; len|51
+;;	 [COMMENT]
+;;-------
+
+
+;; [LINE] getaddr => @(f)
+;; len|16
 		;; Token{=>, 0, 4, |0}
-		;; Token{@, 6, 9, |0}
-		;; Token{(, 3, 1, |0}
-		;; Token{f, 1, 0, |0}
-		;; Token{), 3, 2, |0}
+;; OLD  TOKENS _ 
 		;; Token{getaddr, 1, 6, |0}
 		;; Token{=>, 0, 4, |0}
 		;; Token{@, 6, 9, |0}
 		;; Token{(, 3, 1, |0}
+		;; Token{f, 1, 6, |0}
+		;; Token{), 3, 2, |0}
+;; ADDING NEW TOKENS _ 
+		;; Token{_, 6, 0, |0}
+		;; Token{getaddr, 1, 6, |0}
+		;; Token{=>, 0, 4, |0}
+		;; Token{@, 6, 9, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{_, 6, 0, |0}
+		;; Token{f, 1, 6, |0}
+		;; Token{), 3, 2, |0}
+;; ADDED NEW TOKENS _ 
+		;; Token{_, 6, 0, |0}
+		;; Token{getaddr, 1, 6, |0}
+		;; Token{=>, 0, 4, |0}
+		;; Token{@, 6, 9, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{f, 1, 6, |0}
 		;; Token{), 3, 2, |0}
 ;;------- POSTFIX
+		;; Token{_, 6, 0, |0}
 		;; Token{getaddr, 1, 6, |0}
 		;; Token{@, 6, 9, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{f, 1, 6, |0}
 		;; Token{=>, 0, 4, |0}
 ;;------- //POSTFIX
+		;; Token{_, 6, 0, |0}
 		;; Token{getaddr, 1, 6, |0}
 ;; resolving... 
 		;; Token{getaddr, 1, 6, |0}
@@ -844,6 +1019,7 @@ getaddr:
 	stp x29, x30, [sp, #-16]!
 	mov x29, sp
 		;; Token{@, 6, 9, |0}
+		;; Token{_, 6, 0, |0}
 		;; Token{f, 1, 6, |0}
 ;; resolving... 
 		;; Token{f, 1, 6, |0}
@@ -857,18 +1033,9 @@ getaddr:
 
 
 ;; [LINE]     make f : func(??, ??)
-
-		;; Token{make, 6, 10, |0}
-		;; Token{f, 1, 0, |0}
-		;; Token{:, 3, 0, |0}
-		;; Token{func, 1, 11, |0}
-		;; Token{(, 3, 1, |0}
-		;; Token{?, 3, 0, |0}
+;; len|26
 		;; Token{??, 1, 0, |0}
-		;; Token{,, 0, 3, |0}
-		;; Token{?, 3, 0, |0}
 		;; Token{??, 1, 0, |0}
-		;; Token{), 3, 2, |0}
 		;; Token{make, 6, 10, |0}
 		;; Token{f, 1, 6, |0}
 		;; Token{:, 3, 0, |0}
@@ -888,7 +1055,6 @@ getaddr:
 		;; Token{make, 6, 10, |0}
 		;; Token{f, 1, 6, |0}
 ;; resolving... 
-		;; Token{make, 6, 10, |0}
 		;; Token{f, 1, 6, |0}
 ;; ENTERING IF getaddr
 ;; VAR f HERE
@@ -915,11 +1081,16 @@ getaddr:
 ;;-------
 
 
-;; [LINE]     return _f
-
+;; [LINE]     return f
+;; len|13
+;; OLD  TOKENS _ 
+		;; Token{return, 2, 0, |0}
+		;; Token{f, 1, 0, |0}
+;; ADDING NEW TOKENS _ 
 		;; Token{return, 2, 0, |0}
 		;; Token{_, 6, 0, |0}
 		;; Token{f, 1, 0, |0}
+;; ADDED NEW TOKENS _ 
 		;; Token{return, 2, 0, |0}
 		;; Token{_, 6, 0, |0}
 		;; Token{f, 1, 0, |0}
@@ -951,13 +1122,39 @@ endgetaddr:
 ;;-------
 
 
-;; [LINE] _gasan(6)
+;; [LINE] 
+;; len|1
+;;------- POSTFIX
+;;------- //POSTFIX
+;;-------
 
+
+;; [LINE] // make a variable that is 6
+;; len|29
+;;	 [COMMENT]
+;;-------
+
+
+;; [LINE] // same as `!! 6 gasan`
+;; len|24
+;;	 [COMMENT]
+;;-------
+
+
+;; [LINE] gasan(6)
+;; len|9
+;; OLD  TOKENS _ 
+		;; Token{gasan, 1, 0, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{6, 4, 7, |0}
+		;; Token{), 3, 2, |0}
+;; ADDING NEW TOKENS _ 
 		;; Token{_, 6, 0, |0}
 		;; Token{gasan, 1, 0, |0}
 		;; Token{(, 3, 1, |0}
 		;; Token{6, 4, 7, |0}
 		;; Token{), 3, 2, |0}
+;; ADDED NEW TOKENS _ 
 		;; Token{_, 6, 0, |0}
 		;; Token{gasan, 1, 0, |0}
 		;; Token{(, 3, 1, |0}
@@ -982,8 +1179,36 @@ endgetaddr:
 ;;-------
 
 
-;; [LINE] _gasan(_getaddr(_composefun))
+;; [LINE] 
+;; len|1
+;;------- POSTFIX
+;;------- //POSTFIX
+;;-------
 
+
+;; [LINE] // load into gasan the address of composefun
+;; len|45
+;;	 [COMMENT]
+;;-------
+
+
+;; [LINE] // same as `!! composefun getaddr gasan`
+;; len|41
+;;	 [COMMENT]
+;;-------
+
+
+;; [LINE] gasan(getaddr(composefun))
+;; len|27
+;; OLD  TOKENS _ 
+		;; Token{gasan, 1, 0, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{getaddr, 1, 0, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{composefun, 1, 6, |0}
+		;; Token{), 3, 2, |0}
+		;; Token{), 3, 2, |0}
+;; ADDING NEW TOKENS _ 
 		;; Token{_, 6, 0, |0}
 		;; Token{gasan, 1, 0, |0}
 		;; Token{(, 3, 1, |0}
@@ -991,9 +1216,10 @@ endgetaddr:
 		;; Token{getaddr, 1, 0, |0}
 		;; Token{(, 3, 1, |0}
 		;; Token{_, 6, 0, |0}
-		;; Token{composefun, 1, 0, |0}
+		;; Token{composefun, 1, 6, |0}
 		;; Token{), 3, 2, |0}
 		;; Token{), 3, 2, |0}
+;; ADDED NEW TOKENS _ 
 		;; Token{_, 6, 0, |0}
 		;; Token{gasan, 1, 0, |0}
 		;; Token{(, 3, 1, |0}
@@ -1040,7 +1266,6 @@ endgetaddr:
 	bl getaddr
 	add sp, sp, #16
 	str x0 , [sp, #-16]! ;; push x0
-		;; Token{$$[x29 , #-32], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #-32], 4, 8, |1}
 
 
@@ -1058,39 +1283,36 @@ endgetaddr:
 ;;-------
 
 
-;; [LINE] _horia(_getaddr(_gasan))
-
-		;; Token{_, 6, 0, |0}
-		;; Token{horia, 1, 0, |0}
-		;; Token{(, 3, 1, |0}
-		;; Token{_, 6, 0, |0}
-		;; Token{getaddr, 1, 0, |0}
-		;; Token{(, 3, 1, |0}
-		;; Token{_, 6, 0, |0}
-		;; Token{gasan, 1, 0, |0}
-		;; Token{), 3, 2, |0}
-		;; Token{), 3, 2, |0}
-		;; Token{_, 6, 0, |0}
-		;; Token{horia, 1, 0, |0}
-		;; Token{(, 3, 1, |0}
-		;; Token{_, 6, 0, |0}
-		;; Token{getaddr, 1, 0, |0}
-		;; Token{(, 3, 1, |0}
-		;; Token{_, 6, 0, |0}
-		;; Token{gasan, 1, 6, |0}
-		;; Token{), 3, 2, |0}
-		;; Token{), 3, 2, |0}
+;; [LINE] 
+;; len|1
 ;;------- POSTFIX
-		;; Token{_, 6, 0, |0}
-		;; Token{_, 6, 0, |0}
-		;; Token{_, 6, 0, |0}
+;;------- //POSTFIX
+;;-------
+
+
+;; [LINE] // load into horia the address of gasan
+;; len|40
+;;	 [COMMENT]
+;;-------
+
+
+;; [LINE] // using pipes(-ish) with old syntax
+;; len|37
+;;	 [COMMENT]
+;;-------
+
+
+;; [LINE] !! gasan getaddr horia
+;; len|23
+		;; Token{!!, 1, 16, |0}
 		;; Token{gasan, 1, 6, |0}
-		;; Token{getaddr, 1, 0, |0}
+		;; Token{getaddr, 1, 6, |0}
+		;; Token{horia, 1, 0, |0}
+;;------- POSTFIX
+		;; Token{gasan, 1, 6, |0}
+		;; Token{getaddr, 1, 6, |0}
 		;; Token{horia, 1, 0, |0}
 ;;------- //POSTFIX
-		;; Token{_, 6, 0, |0}
-		;; Token{_, 6, 0, |0}
-		;; Token{_, 6, 0, |0}
 		;; Token{gasan, 1, 6, |0}
 ;; resolving... 
 		;; Token{gasan, 1, 6, |0}
@@ -1099,13 +1321,12 @@ endgetaddr:
 ;; PARAMS SIZE: 0
 
 ;; IS_VAR gasan
-		;; Token{$$[x29 , #-16], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #-16], 4, 8, |1}
 
 
-		;; Token{getaddr, 1, 0, |0}
+		;; Token{getaddr, 1, 6, |0}
 ;; resolving... 
-		;; Token{getaddr, 1, 0, |0}
+		;; Token{getaddr, 1, 6, |0}
 ;; ENTERING IF main
 ;; VAR getaddr HERE
 ;; PARAMS SIZE: 1
@@ -1119,7 +1340,6 @@ endgetaddr:
 	bl getaddr
 	add sp, sp, #16
 	str x0 , [sp, #-16]! ;; push x0
-		;; Token{$$[x29 , #-48], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #-48], 4, 8, |1}
 
 
@@ -1135,17 +1355,33 @@ endgetaddr:
 ;;-------
 
 
-;; [LINE] make horia : func(3, 1)
+;; [LINE] // or noromally
+;; len|16
+;;	 [COMMENT]
+;;-------
 
-		;; Token{make, 6, 10, |0}
-		;; Token{horia, 1, 0, |0}
-		;; Token{:, 3, 0, |0}
-		;; Token{func, 1, 11, |0}
-		;; Token{(, 3, 1, |0}
-		;; Token{3, 4, 7, |0}
-		;; Token{,, 0, 3, |0}
-		;; Token{1, 4, 7, |0}
-		;; Token{), 3, 2, |0}
+
+;; [LINE] // horia(getaddr(gasan))
+;; len|25
+;;	 [COMMENT]
+;;-------
+
+
+;; [LINE] 
+;; len|1
+;;------- POSTFIX
+;;------- //POSTFIX
+;;-------
+
+
+;; [LINE] // let compiler know that horia is a function and it's signature
+;; len|65
+;;	 [COMMENT]
+;;-------
+
+
+;; [LINE] make horia : func(3, 1)
+;; len|24
 		;; Token{make, 6, 10, |0}
 		;; Token{horia, 1, 6, |0}
 		;; Token{:, 3, 0, |0}
@@ -1165,7 +1401,6 @@ endgetaddr:
 		;; Token{make, 6, 10, |0}
 		;; Token{horia, 1, 6, |0}
 ;; resolving... 
-		;; Token{make, 6, 10, |0}
 		;; Token{horia, 1, 6, |0}
 ;; ENTERING IF main
 ;; VAR horia HERE
@@ -1192,7 +1427,35 @@ endgetaddr:
 ;;-------
 
 
-;; [LINE] _call(1, _horia(_dblp, _trpl, 2))
+;; [LINE] 
+;; len|1
+;;------- POSTFIX
+;;------- //POSTFIX
+;;-------
+
+
+;; [LINE] // !! 1 _ _dblp _trpl 2 horia call
+;; len|35
+;;	 [COMMENT]
+;;-------
+
+
+;; [LINE] call(1, horia(dblp, trpl, 2));; len|29
+;; OLD  TOKENS _ 
+		;; Token{call, 1, 5, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{1, 4, 7, |0}
+		;; Token{,, 0, 3, |0}
+		;; Token{horia, 1, 0, |0}
+		;; Token{(, 3, 1, |0}
+		;; Token{dblp, 1, 6, |0}
+		;; Token{,, 0, 3, |0}
+		;; Token{trpl, 1, 6, |0}
+		;; Token{,, 0, 3, |0}
+		;; Token{2, 4, 7, |0}
+		;; Token{), 3, 2, |0}
+		;; Token{), 3, 2, |0}
+;; ADDING NEW TOKENS _ 
 		;; Token{_, 6, 0, |0}
 		;; Token{call, 1, 5, |0}
 		;; Token{(, 3, 1, |0}
@@ -1202,14 +1465,15 @@ endgetaddr:
 		;; Token{horia, 1, 0, |0}
 		;; Token{(, 3, 1, |0}
 		;; Token{_, 6, 0, |0}
-		;; Token{dblp, 1, 0, |0}
+		;; Token{dblp, 1, 6, |0}
 		;; Token{,, 0, 3, |0}
 		;; Token{_, 6, 0, |0}
-		;; Token{trpl, 1, 0, |0}
+		;; Token{trpl, 1, 6, |0}
 		;; Token{,, 0, 3, |0}
 		;; Token{2, 4, 7, |0}
 		;; Token{), 3, 2, |0}
 		;; Token{), 3, 2, |0}
+;; ADDED NEW TOKENS _ 
 		;; Token{_, 6, 0, |0}
 		;; Token{call, 1, 5, |0}
 		;; Token{(, 3, 1, |0}
@@ -1288,7 +1552,6 @@ endgetaddr:
 	blr x14
 	add sp, sp, #48
 	str x0 , [sp, #-16]! ;; push x0
-		;; Token{$$[x29 , #-80], 4, 8, |1}
 ;; stpush 		;; Token{$$[x29 , #-80], 4, 8, |1}
 
 
@@ -1301,5 +1564,4 @@ endgetaddr:
 	str x15 , [sp, #-16]! ;; push x15
 	ldr x0, [sp], #16 ;; pop x0
 	svc #0
-		;; Token{$$x0, 4, 8, |0}
 ;;<<END

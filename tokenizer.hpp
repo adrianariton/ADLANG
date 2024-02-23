@@ -9,11 +9,10 @@ public:
             : m_src(std::move(src))
     {
     }
-    inline std::vector<Token> tokenize()
+    inline std::vector<Token> tokenize(bool old_format=false)
     {
         std::vector<Token> tokens = {};
         std::string buf = "";
-
         while (peek().has_value()) {
             char c = consume();
             if ((c == ' ' || c == '\n')) {
@@ -29,6 +28,7 @@ public:
                     if (findop(possible_op)) {
                         tokens.at(tokens.size() - 1)
                                 .update(tokens.at(tokens.size() - 1).value + c);
+                        tokens.at(tokens.size() - 1).logtok();
                         continue;
                     }
                 }
@@ -43,17 +43,48 @@ public:
             }
         }
 
+        if (tokens.size() == 0)
+            return tokens;
+
         if (buf.size() > 0)
             tokens.push_back(Token(buf));
         m_index = 0;
 
         for (int i = 0; i < tokens.size() - 1; ++i) {
             if (tokens.at(i).type == IDENTIFIER && tokens.at(i).type != KEYWD &&
-                tokens.at(i + 1).subtype != OPENBRACK)
+                tokens.at(i + 1).subtype != OPENBRACK && tokens.at(i).subtype != _OLD_FORMAT_SPECIFIER)
                 tokens.at(i).subtype = VARIABLE;
         }
 
-        return tokens;
+
+        bool do_add_nil = true;
+
+        if (tokens.at(0).subtype == _MAKE)
+            do_add_nil = false;
+        if (tokens.at(0).subtype == _OLD_FORMAT_SPECIFIER) {
+            do_add_nil = false;
+            tokens.erase(tokens.begin());
+        }
+        if (do_add_nil == false)
+            return tokens;
+        std::vector<Token> new_toks;
+                std::cout<<";; OLD  TOKENS _ \n";
+
+        for (auto & tok : tokens)
+            tok.logtok(); 
+        std::cout<<";; ADDING NEW TOKENS _ \n";
+        for (auto& tok: tokens) {
+            if (tok.type == IDENTIFIER) {
+                new_toks.push_back(Token("_"));
+            }
+            new_toks.push_back(tok);
+        }
+        for (auto & tok : new_toks)
+            tok.logtok(); 
+
+        std::cout<<";; ADDED NEW TOKENS _ \n";
+
+        return new_toks;
     }
 
 private:
